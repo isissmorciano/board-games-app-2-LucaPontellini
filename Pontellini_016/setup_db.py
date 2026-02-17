@@ -1,18 +1,24 @@
 import sqlite3
 import os
 
-# Definiamo dove creare il file del database (nella cartella instance)
-if not os.path.exists("instance"):
-    os.makedirs("instance")
+def setup_database():
+    # Crea la cartella instance se non esiste
+    if not os.path.exists("instance"):
+        os.makedirs("instance")
 
-db_path = os.path.join("instance", "db.sqlite")
+    db_path = os.path.join("instance", "db.sqlite")
 
-# Ci connettiamo (se il file non esiste, lo crea)
-connection = sqlite3.connect(db_path)
+    # Se il DB esiste già, non lo ricrea
+    if os.path.exists(db_path):
+        print("Database già esistente, nessuna azione necessaria.")
+        return
 
-# Leggiamo lo schema SQL
-with open("app/schema.sql") as f:
-    connection.executescript(f.read())
+    # Crea il DB
+    connection = sqlite3.connect(db_path)
 
-print("Database creato con successo in:", db_path)
-connection.close()
+    # Applica lo schema
+    with open("app/schema.sql") as f:
+        connection.executescript(f.read())
+
+    print("Database creato con successo in:", db_path)
+    connection.close()
