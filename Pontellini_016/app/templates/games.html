@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Giochi Disponibili</h1>
+<h1>Tutti i Giochi</h1>
 
 {% for game in games %}
 <article>
@@ -16,13 +16,15 @@
          alt="{{ game['nome'] }}"
          style="width:150px; border:1px solid #ccc; margin-bottom:10px;"></br>
 
-    <small>
-        Categoria: {{ game['categoria'] }} —
-        Max giocatori: {{ game['numero_giocatori_massimo'] }} —
-        Durata media: {{ game['durata_media'] }} min
-    </small>
+    <p>
+        Categoria: {{ game['categoria'] }}<br>
+        Max giocatori: {{ game['numero_giocatori_massimo'] }}<br>
+        Durata media: {{ game['durata_media'] }} minuti
+    </p>
 
 </article>
 <hr>
 {% endfor %}
+
+<a href="{{ url_for('main.nuovo_gioco') }}">Aggiungi un nuovo gioco</a>
 {% endblock %}

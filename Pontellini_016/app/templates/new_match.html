@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Nuova Partita</h1>
+
+<form method="POST">
+    <label>Data</label><br>
+    <input type="date" name="data" required><br><br>
+
+    <label>Vincitore</label><br>
+    <input type="text" name="vincitore" required><br><br>
+
+    <label>Punteggio vincitore</label><br>
+    <input type="number" name="punteggio_vincitore" required><br><br>
+
+    <button type="submit">Salva</button>
+</form>
+{% endblock %}

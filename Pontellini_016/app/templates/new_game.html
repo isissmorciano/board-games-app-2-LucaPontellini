@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Nuovo Gioco</h1>
+
+<form method="POST">
+    <label>Nome</label><br>
+    <input type="text" name="nome" required><br><br>
+
+    <label>Numero giocatori massimo</label><br>
+    <input type="number" name="numero_giocatori_massimo" required><br><br>
+
+    <label>Durata media (minuti)</label><br>
+    <input type="number" name="durata_media" required><br><br>
+
+    <label>Categoria</label><br>
+    <input type="text" name="categoria" required><br><br>
+
+    <button type="submit">Salva</button>
+</form>
+{% endblock %}

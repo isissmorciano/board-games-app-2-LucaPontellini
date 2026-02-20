@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Partite di {{ gioco['nome'] }}</h1>
+
+<a href="{{ url_for('main.nuova_partita', game_id=gioco['id']) }}">Registra nuova partita</a>
+<hr>
+
+{% for p in partite %}
+<article>
+    <h3>{{ p['data'] }}</h3>
+    <p>
+        Vincitore: {{ p['vincitore'] }}<br>
+        Punteggio: {{ p['punteggio_vincitore'] }}
+    </p>
+</article>
+<hr>
+{% endfor %}
+{% endblock %}
